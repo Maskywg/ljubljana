@@ -8,7 +8,7 @@
 
 網站原始檔位於 `dist/`。`index.html` 為內容、`style.css` 為樣式、`app.js` 為互動、`stops.js` 為地圖景點資料。
 
-可用 `python3 -m http.server 8873 --directory dist` 預覽。推送至 `main` 後，GitHub Actions 會發布至 GitHub Pages。
+可用 `python3 -m http.server 8873 --directory dist` 預覽。GitHub Pages 從 `main` 分支的 `dist/` 目錄發布網站。
 
 ## 來源與授權
 
