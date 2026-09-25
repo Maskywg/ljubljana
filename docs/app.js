@@ -1,10 +1,18 @@
 'use strict';
+const designStyles = document.createElement('link');
+designStyles.rel = 'stylesheet';
+designStyles.href = 'design.css';
+document.head.append(designStyles);
 const cards = [...document.querySelectorAll('.stop-card')];
 const grid = document.querySelector('.walk-grid');
 const selectedName = document.querySelector('#selected-name');
 const mapStatus = document.querySelector('#map-status');
 let map, markers = [], stops = [], route, activeId = 1;
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sourcesSection = document.querySelector('#sources');
+if (sourcesSection) {
+  sourcesSection.insertAdjacentHTML('beforebegin', `<section class="ivy-teaser" aria-labelledby="ivy-teaser-title"><div class="ivy-collage"><img src="ivy/photos/01-market-mushrooms.jpg" alt="中央市場的新鮮菇類" loading="lazy"><img src="ivy/photos/14-prometheus.jpg" alt="屠夫橋旁的 Prometheus 雕塑" loading="lazy"><img src="ivy/photos/31-nuk-staircase.jpg" alt="NUK 國家暨大學圖書館的黑色大理石階梯" loading="lazy"></div><div class="ivy-teaser-copy"><p class="eyebrow">IVY'S PHOTO JOURNAL</p><h2 id="ivy-teaser-title">看完城市的歷史，<br>再走進旅人的視線。</h2><p>31 張現地旅拍，從市場攤上的森林氣味、屠夫橋的怪誕雕塑，到圖書館由幽暗走向知識之光的階梯。每一張照片，都補上一段在地典故與旅途故事。</p><a class="primary" href="ivy/">翻閱 Ivy 旅拍影像誌 <span>↗</span></a></div></section>`);
+}
 function setView(view) {
   grid.dataset.view = view;
   document.querySelectorAll('.mobile-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
